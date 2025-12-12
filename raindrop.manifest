@@ -1,0 +1,57 @@
+application "fitscan-diet" {
+
+  // Service for nutrition insights using SmartBuckets
+  service "nutrition-insights" {
+    visibility = "public"
+    domain {
+      // Replace YOUR_ACTUAL_ORG_ID with your org ID from raindrop.run dashboard
+      fqdn = "nutrition-insights.YOUR_ACTUAL_ORG_ID.lmapp.run"
+    }
+  }
+
+  // Service for meal search with SmartBuckets
+  service "meal-search" {
+    visibility = "public"
+    domain {
+      fqdn = "meal-search.YOUR_ACTUAL_ORG_ID.lmapp.run"
+    }
+  }
+
+  // Service for data sync and analysis
+  service "data-sync" {
+    visibility = "private"
+  }
+
+  // SmartBucket for nutrition data storage and insights
+  bucket "nutrition-data" {
+    description = "Personalized nutrition tracking data and AI insights"
+    
+    // Automatic embeddings for semantic search
+    embeddings = true
+    
+    // Enable intelligent insights
+    insights = true
+    
+    // Natural language querying
+    nlp_query = true
+  }
+
+  // SmartBucket for meal history
+  bucket "meal-history" {
+    description = "Complete meal history with metadata"
+    
+    // Enable semantic search for meals
+    embeddings = true
+    
+    // Support meal-type categorization
+    metadata_schema = {
+      meal_type = "string"
+      calories = "number"
+      protein = "number"
+      carbs = "number"
+      fat = "number"
+      date = "string"
+      tags = "array"
+    }
+  }
+}
