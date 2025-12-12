@@ -1,0 +1,10 @@
+project_id = "hfyqvsbhxcvydhuqiwcw"
+
+[functions.analyze-food]
+verify_jwt = false
+
+[functions.calculate-calories]
+verify_jwt = false
+
+[functions.generate-meal-plan]
+verify_jwt = false
